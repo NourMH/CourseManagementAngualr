@@ -1,0 +1,188 @@
+<div class="container mt-5">
+  <form class="row g-3" [formGroup]="formAddCourses" (submit)="onSubmit()">
+    <div class="col-md-4">
+      <label for="validationServer01" class="form-label">Course name</label>
+      <input type="text" formControlName="name" class="form-control" [ngClass]="{'is-valid': formAddCourses.get('name')?.dirty && !formAddCourses.get('name')?.errors ,
+          'is-invalid':formAddCourses.get('name')?.dirty && formAddCourses.get('name')?.errors}">
+      <div class="invalid-feedback">
+        value is Required
+      </div>
+    </div>
+    <div class="col-md-4">
+      <label for="validationServer01" class="form-label">duration</label>
+      <input type="number" formControlName="duration" class="form-control" [ngClass]="{'is-valid': formAddCourses.get('duration')?.dirty && !formAddCourses.get('duration')?.errors ,
+          'is-invalid':formAddCourses.get('duration')?.dirty && formAddCourses.get('duration')?.errors}">
+      <div class="invalid-feedback">
+        value is Required
+      </div>
+    </div>
+    <div class="col-md-4">
+      <label for="validationServer01" class="form-label">Count Of Reservation</label>
+      <input type="text" formControlName="countOfReservation" class="form-control"
+        [ngClass]="{'is-valid': formAddCourses.get('countOfReservation')?.dirty && !formAddCourses.get('countOfReservation')?.errors ,
+                      'is-invalid':formAddCourses.get('countOfReservation')?.dirty && formAddCourses.get('countOfReservation')?.errors}">
+      <div class="invalid-feedback">
+        value is Required
+      </div>
+    </div>
+    <div class="col-md-4">
+      <label for="validationServer01" class="form-label">ageFrom</label>
+      <input type="number" formControlName="ageFrom" class="form-control" [ngClass]="{'is-valid': formAddCourses.get('ageFrom')?.dirty && !formAddCourses.get('ageFrom')?.errors ,
+                      'is-invalid':formAddCourses.get('ageFrom')?.dirty && formAddCourses.get('ageFrom')?.errors}">
+      <div class="invalid-feedback">
+        value is Required
+      </div>
+    </div>
+    <div class="col-md-4">
+      <label for="validationServer01" class="form-label">ageTo</label>
+      <input type="number" formControlName="ageTo" class="form-control" [ngClass]="{'is-valid': formAddCourses.get('ageTo')?.dirty && !formAddCourses.get('ageTo')?.errors ,
+                      'is-invalid':formAddCourses.get('ageTo')?.dirty && formAddCourses.get('ageTo')?.errors}">
+      <div class="invalid-feedback">
+        value is Required
+      </div>
+    </div>
+    <div class="col-md-4">
+      <label for="validationServer01" class="form-label">cost</label>
+      <input type="number" formControlName="cost" class="form-control" [ngClass]="{'is-valid': formAddCourses.get('cost')?.dirty && !formAddCourses.get('cost')?.errors ,
+                      'is-invalid':formAddCourses.get('cost')?.dirty && formAddCourses.get('cost')?.errors}">
+      <div class="invalid-feedback">
+        value is Required
+      </div>
+    </div>
+    <div class="col-md-4">
+      <label for="validationServer01" class="form-label">capacity</label>
+      <input type="number" formControlName="capacity" class="form-control" [ngClass]="{'is-valid': formAddCourses.get('capacity')?.dirty && !formAddCourses.get('capacity')?.errors ,
+                      'is-invalid':formAddCourses.get('capacity')?.dirty && formAddCourses.get('capacity')?.errors}">
+      <div class="invalid-feedback">
+        value is Required
+      </div>
+    </div>
+    <div class="col-md-4">
+      <label for="validationServer01" class="form-label">startDate</label>
+      <input type="date" formControlName="startDate" class="form-control" [ngClass]="{'is-valid': formAddCourses.get('startDate')?.dirty && !formAddCourses.get('startDate')?.errors ,
+                      'is-invalid':formAddCourses.get('startDate')?.dirty && formAddCourses.get('startDate')?.errors}">
+      <div class="invalid-feedback">
+        value is Required
+      </div>
+    </div>
+    <div class="col-md-4">
+      <label for="validationServer01" class="form-label">course Branches</label>
+      <!-- <select class="form-control" formControlName="courseBranches">
+        <option value="" selected>choose Course Branches</option>
+        <option *ngFor="let item of courseBranches" [value]="item.id">{{item.name}}</option>
+      </select> -->
+      <ng-select  [multiple]="true" formControlName="courseBranches"  >
+        <ng-option *ngFor="let item of courseBranches" [value]="item.id" >{{item.name}}</ng-option>
+        <!-- <ng-option [value]="'custom'">Custom</ng-option> -->
+    </ng-select>
+      <div class="invalid-feedback">
+        value is Required
+      </div>
+    </div>
+    <div class="col-md-4">
+      <label for="validationServer01" class="form-label">Gender</label>
+      <select class="form-control" formControlName="gender">
+        <option value="" selected>choose Gender</option>
+        <option *ngFor="let item of genders" [value]="item.id">{{item.name}}</option>
+      </select>
+      <div class="invalid-feedback">
+        value is Required
+      </div>
+    </div>
+    <div class="col-md-4">
+      <label for="validationServer01" class="form-label">academy</label>
+      <select class="form-control" formControlName="academyId">
+        <option value="" selected>choose academy </option>
+        <option *ngFor="let item of academy" [value]="item.id">{{item.name}}</option>
+      </select>
+      <div class="invalid-feedback">
+        value is Required
+      </div>
+    </div>
+    <div class="col-md-4">
+      <label for="validationServer01" class="form-label">staduim</label>
+      <select class="form-control" formControlName="staduimId">
+        <option value="" selected>choose staduim</option>
+        <option *ngFor="let item of listOfStaduims" [value]="item.id">{{item.name}}</option>
+      </select>
+      <div class="invalid-feedback">
+        value is Required
+      </div>
+    </div>
+    <div class="col-12" formArrayName="courseReservations">
+      <div class="row">
+        <ng-container *ngFor="let item of FormCourseReservation.controls;let i = index">
+          <ng-container [formGroupName]="i">
+            <div class="col-md-6 row">
+              <div class="col-md-5">
+                <label for="validationServer01" class="form-label">Day</label>
+                <select class="form-control" formControlName="day">
+                  <option value="" selected>choose day</option>
+                  <option *ngFor="let item of days" [value]="item.id">{{item.name}}</option>
+                </select>
+                <div class="invalid-feedback">
+                  value is Required
+                </div>
+              </div>
+              <div class="col-md-3">
+                <label for="validationServer01" class="form-label">Time</label>
+                <input type="time" formControlName="time" class="form-control" [ngClass]="{'is-valid': formAddCourses.get('time')?.dirty && !formAddCourses.get('time')?.errors ,
+            'is-invalid':formAddCourses.get('time')?.dirty && formAddCourses.get('time')?.errors}">
+                <div class="invalid-feedback">
+                  value is Required
+                </div>
+              </div>
+              <div class="col-md-4 row">
+                <label class="form-label" style="visibility: hidden;">.</label>
+                <button class="btn btn-danger col-5 me-2" (click)="removeFormCourseReservation(i)" *ngIf="FormCourseReservation.controls.length != 1 ">-</button>
+                <button class="btn btn-success col-5" [disabled]="FormCourseReservation.controls.length == 7" (click)="addFormCourseReservation()" *ngIf="i == FormCourseReservation.controls.length - 1">+</button>
+              </div>
+            </div>
+          </ng-container>
+        </ng-container>
+      </div>
+    </div>
+    <div class="col-12">
+      <button class="btn btn-primary" type="submit">Submit</button>
+    </div>
+    <div class="col-12">
+      <div class="alert alert-success" [class]="statusCourses ? 'alert-success':'alert-danger'" role="alert" *ngIf="doneMessage">
+        {{doneMessage}}
+      </div>
+        <!-- <div class="alert alert-danger" role="alert" *ngIf="errorMessge">
+          {{errorMessge}}
+        </div> -->
+    </div>
+  </form>
+
+</div>
+<div class="modal fade show" [style.display]="submit ? 'block': 'none'" [class]="submit ? 'show' : '' " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="close()"></button>
+      </div>
+      <div class="modal-body">
+        
+  <div class="col-12" *ngIf="DataCources.length > 0">
+    <div class="row">
+      <ng-container *ngFor="let item of DataCources">
+        <div class="col-md-3">
+          <div class="row w-100">
+            <div class="alert text-center" [class]="item.reservied ? 'alert-danger':'alert-success'" role="alert">
+              {{item.date | date}}
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+      <!-- </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Understood</button>
+      </div> -->
+    </div>
+  </div>
+</div>
